@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row p-2">
+        <div class="col-md-12 col-lg-12col-sm-12">
+            <div class="row border p-2 m-2">
+                <div class="col-md-12 col-lg-2 col-sm-12   text-center">
+                    <div class="profile-picture">
+                        <img src="{{ img }}" class="rounded-circle" alt="" width="100">
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-10 col-sm-12  ">
+                    <mat-list>
+                        <mat-list-item>
+                            <div class="row">
+                                <div class="col-1">
+                                    <mat-icon mat-list-icon>account_circle</mat-icon>
+                                </div>
+                                <div class="col-1">
+                                    <h3 mat-line class="m-0">{{ nombre }}</h3>
+                                </div>
+                            </div>
+
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div class="row">
+                                <div class="col-1">
+                                    <mat-icon mat-list-icon>email</mat-icon>
+
+                                </div>
+                                <div class="col-1">
+                                    <p mat-line class="mb-0"> {{ email }}</p>
+                                </div>
+                            </div>
+
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div class="row">
+                                <div class="col-1">
+                                    <mat-icon mat-list-icon>public</mat-icon>
+                                </div>
+                                <div class="col-1">
+                                    <p mat-line class="mb-0"> {{ website }}</p>
+
+                                </div>
+                            </div>
+
+                        </mat-list-item>
+                        <mat-list-item class="d-flex">
+                            <div class="row">
+                                <div class="col-1">
+                                    <mat-icon mat-list-icon>group</mat-icon>
+
+                                </div>
+                                <div class="col-1">
+                                    <p mat-line class="mb-0"> {{ amigos }}</p>
+                                </div>
+                            </div>
+
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div class="row">
+                                <div class="col-1">
+                                    <mat-icon mat-list-icon>people</mat-icon>
+                                </div>
+                                <div class="col-1">
+                                    <p mat-line class="mb-0">Lista de amigos</p>
+                                </div>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+
+                    <ul>
+                        <li *ngFor="let blogger of bloggers">
+                            {{ blogger }}
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>

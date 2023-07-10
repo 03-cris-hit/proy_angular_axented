@@ -1,0 +1,164 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+            <mat-card class="custom-card w-100">
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutAlign="center center">
+                        
+                        <div class="row p-2 ">
+                            <div class="col-md-4 col-lg-4 col-sm-12">
+                                <div class="row border p-2 m-2 colob">
+                                    <div class="col-md-12 col-lg-4 col-sm-12   text-center">
+                                        <div class="profile-picture color-white">
+                                            <img src="{{ img }}" class="rounded-circle" alt="" width="100">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 p-2  text-center">
+
+                                                <button mat-button color="primary" matTooltip="Cerrar sesión"
+                                                    matTooltipPosition="above" (click)="cerrarSesion()">
+                                                    <mat-icon>exit_to_app</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-8 col-sm-12  colob">
+                                        <mat-list>
+                                            <mat-list-item>
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <mat-icon mat-list-icon>account_circle</mat-icon>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <h3 mat-line class="m-0">{{ nombre }}</h3>
+                                                    </div>
+                                                </div>
+                    
+                                            </mat-list-item>
+                                            <mat-list-item>
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <mat-icon mat-list-icon>email</mat-icon>
+                    
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p mat-line class="mb-0"> {{ email }}</p>
+                                                    </div>
+                                                </div>
+                    
+                                            </mat-list-item>
+                                            <mat-list-item>
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <mat-icon mat-list-icon>public</mat-icon>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p mat-line class="mb-0"> {{ website }}</p>
+                    
+                                                    </div>
+                                                </div>
+                    
+                                            </mat-list-item>
+                                            <mat-list-item class="d-flex">
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <mat-icon mat-list-icon>group</mat-icon>
+                    
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p mat-line class="mb-0"> {{ amigos }}</p>
+                                                    </div>
+                                                </div>
+                    
+                                            </mat-list-item>
+                                          
+                                        </mat-list>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-12">
+                                <div class="row ">
+                                    <div class=" col-md-9 col-lg-9 col-sm-12">
+                                        <mat-form-field appearance="outline" class="w-100">
+
+                                            <input matInput [placeholder]="placehoder" type="text"
+                                                [(ngModel)]="searchText">
+                                            <button mat-button *ngIf="searchText" matSuffix mat-icon-button
+                                                aria-label="Clear" (click)="searchText=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-sm-12">
+                                        <button class="m-2" mat-raised-button color="warn" (click)="buscarBloger()"
+                                            type="button">
+                                            <mat-icon>search</mat-icon>
+                                            Buscar bloger
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <mat-button-toggle-group>
+                                            <mat-button-toggle value="todos" (click)="filterFriends('todos')">Todos
+                                            </mat-button-toggle>
+                                            <mat-button-toggle value="amigos" (click)="filterFriends('amigos')">
+                                                Amigos</mat-button-toggle>
+                                        </mat-button-toggle-group>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="grid-container">
+                                    <mat-grid-list cols="1" rowHeight="200px">
+                                        <mat-grid-tile *ngFor="let item of bloggers">
+                                            <mat-card class="w-100">
+                                                <mat-card-header>
+                                                    <div class="row w-100">
+                                                        <div class="col-md-2 col-lg-2">
+                                                            <div class="profile-picture">
+                                                                <img src="{{ item.picture_url }}" class="rounded-circle"
+                                                                    alt="" width="100">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5 col-lg-5">
+                                                            <mat-card-title>{{ item.name }}</mat-card-title>
+                                                            <mat-card-subtitle>{{ item.website }}</mat-card-subtitle>
+                                                        </div>
+                                                    </div>
+                                                </mat-card-header>
+                                                <mat-card-actions align="end">
+                                                    <button mat-icon-button color="primary" (click)="verBlogger(item.id)"
+                                                        matTooltip="Ver " *ngIf="amigostod">
+                                                        <mat-icon>visibility</mat-icon>
+                                                    </button>
+                                                    <button mat-icon-button color="warn"
+                                                        matTooltip="Agregar como favorito"
+                                                        (click)="agregarAmigo(item.id)" *ngIf="amigostod">
+                                                        <mat-icon>favorite</mat-icon>
+                                                    </button>
+                                                    <button mat-icon-button color="warn"
+                                                        matTooltip="Dejar de ser amigos"
+                                                        (click)="eliminarAmigo(item.id)" *ngIf=" amigosfiv ">
+                                                        <mat-icon>cancel</mat-icon>
+                                                    </button>
+                                                </mat-card-actions>
+                                            </mat-card>
+                                        </mat-grid-tile>
+                                    </mat-grid-list>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </mat-card-content>
+
+
+            </mat-card>
+        </div>
+    </div>
+</div>

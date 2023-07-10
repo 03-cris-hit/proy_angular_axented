@@ -1,0 +1,69 @@
+<div class="container p-3">
+    <h2>Crear cuenta</h2>
+
+    <form (ngSubmit)="submitForm()" #form="ngForm">
+        <div class="row">
+
+            <div class="col-12">
+                <mat-form-field appearance="outline" class="w-100 ">
+                    <mat-label class="p-2">
+                        <mat-icon matPrefix>account_circle</mat-icon>
+                        Nombre
+                    </mat-label>
+                    <input matInput placeholder="Nombre" name="name" [(ngModel)]="formData.name" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="p-2">
+                        <mat-icon matPrefix>email</mat-icon>
+                        Correo
+                    </mat-label>
+                    <input matInput placeholder="Correo" name="email" [(ngModel)]="formData.email" required email>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label class="p-2">
+                        <mat-icon matPrefix>language</mat-icon>
+                        Sitio web
+                    </mat-label>
+                    <input matInput placeholder="Sitio web" name="website" [(ngModel)]="formData.website" required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+                <input type="file" class="file-input"
+                (change)="seleccionarArchivo($event)" #fileUpload>
+         
+         <div class="file-upload">
+         
+            {{fileName || "Cargar archivo."}}
+         
+             <button mat-mini-fab color="primary" class="upload-btn" type="button"
+               (click)="fileUpload.click()">
+                 <mat-icon>attach_file</mat-icon>
+             </button>
+         </div>
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-md-12 text-center">
+              <button class="m-2"mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Guardar</button>
+              <button class="m-2" mat-raised-button color="warn" (click)="closeModal()" type="button">Cancelar</button>
+            </div>
+          </div>
+
+    </form>
+</div>

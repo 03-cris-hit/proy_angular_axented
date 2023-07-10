@@ -1,0 +1,35 @@
+.custom-card {
+    width: 350px;
+    width: auto;
+  }
+  :host ::ng-deep .custom-card {
+    width: 350px;
+    
+  }
+  .detallesUsuario{
+
+    margin-left: 15px;
+    margin-top: 15px;
+}
+ 
+.btns{
+    margin-right: 15px;
+}
+.grid-container {
+    max-height: 650px; /* Define la altura máxima para el contenedor */
+    overflow-y: auto; /* Activa el desplazamiento vertical */
+  }
+  
+  .mat-icon-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mat-icon-button mat-icon {
+    font-size: 24px;
+  }

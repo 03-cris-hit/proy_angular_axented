@@ -1,0 +1,19 @@
+/* modal-blogger.component.css */
+:host {
+    display: block;
+    width: 100%;
+    max-width: 800px; /* Establece el ancho máximo del modal */
+    max-height: 600px; /* Establece la altura máxima del modal */
+  }
+  
+  .modal-content {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .container{
+
+    width: 700px;
+    height: 380px;
+
+  }
